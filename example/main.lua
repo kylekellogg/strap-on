@@ -1,4 +1,4 @@
-StrapOn = require '../strap-on'
+local StrapOn = require '../strap-on'
 
 local acc1
 local acc2
@@ -10,7 +10,6 @@ function love.load( arg )
   --  Will be continuously called
   --  Showcases the flow of callbacks (pre, _, and post)
   acc1 = {
-      id = 'acc1',
       counter = 1
     }
 
@@ -37,9 +36,7 @@ function love.load( arg )
   --  Will only have it's method called once
   --  Showcases how to remove from the callback flow
   --  Even though "unstrap" is called during update(), postupdate() will be called [this allows for cleanup, etc]
-  acc2 = {
-      id = 'acc2'
-    }
+  acc2 = {}
 
   acc2 = StrapOn.strap( acc2 )
 
