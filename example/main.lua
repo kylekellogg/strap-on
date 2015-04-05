@@ -1,64 +1,64 @@
 local StrapOn = require '../strap-on'
 
-local acc1
-local acc2
-local acc3
+local a
+local b
+local c
 
 --  Main functions
 
 function love.load( arg )
   --  Will be continuously called
   --  Showcases the flow of callbacks (pre, _, and post)
-  acc1 = {
+  a = {
       counter = 1
     }
 
-  acc1 = StrapOn.strap( acc1 )
+  a = StrapOn.strap( a )
 
-  function acc1.preupdate( ... )
-    print( 'acc1.preupdate' )
+  function a.preupdate( ... )
+    print( 'a.preupdate' )
   end
 
-  function acc1.update( ... )
-    print( 'acc1.update' )
+  function a.update( ... )
+    print( 'a.update' )
   end
 
-  function acc1.postupdate( ... )
-    print( 'acc1.postupdate :: ' .. acc1.counter )
+  function a.postupdate( ... )
+    print( 'a.postupdate :: ' .. a.counter )
 
-    if acc1.counter == 5 then
-      StrapOn.strap( acc2 )
+    if a.counter == 5 then
+      StrapOn.strap( b )
     end
 
-    acc1.counter = acc1.counter + 1
+    a.counter = a.counter + 1
   end
 
   --  Will only have it's method called once
   --  Showcases how to remove from the callback flow
   --  Even though "unstrap" is called during update(), postupdate() will be called [this allows for cleanup, etc]
-  acc2 = {}
+  b = {}
 
-  acc2 = StrapOn.strap( acc2 )
+  b = StrapOn.strap( b )
 
-  function acc2.update( ... )
-    print( 'acc2.update' )
-    acc2.unstrap()
+  function b.update( ... )
+    print( 'b.update' )
+    b.unstrap()
   end
 
-  function acc2.postupdate( ... )
-    print( 'acc2.postupdate' )
+  function b.postupdate( ... )
+    print( 'b.postupdate' )
   end
 
   --  Will be continuously called
   --  Showcases selective callbacks
-  acc3 = StrapOn.strap()
+  c = StrapOn.strap()
 
-  function acc3.update( ... )
-    print( 'acc3.update' )
+  function c.update( ... )
+    print( 'c.update' )
   end
 
-  function acc3.postupdate( ... )
-    print( 'acc3.postupdate' )
+  function c.draw( ... )
+    print( 'c.draw' )
   end
 
   --  Starting up StrapOn
@@ -67,7 +67,6 @@ end
 
 function love.update( dt )
   print( 'love.update' )
-  print( '' )
 end
 
 --  Error handling
