@@ -20,7 +20,7 @@ local StrapOn = require 'strap-on'
 local myTable = {}                --  A barebones object (or a complex one, whatever)
 local altTable = StrapOn.strap()  --  Creates a blank object for you
 
---  Callbacks for your "myTable" table, showcasing the pre\*, \*, and post\* callbacks
+--  Callbacks for your "myTable" table, showcasing the pre*, *, and post* callbacks
 function myTable.preupdate( dt )
   --  Whatever you want...
 end
@@ -39,7 +39,8 @@ function altTable.update( dt )
 end
 
 function love.load()
-  StrapOn.strap( myTable )  --  Will return myTable as well, but you don't need to reassign it or anything
+  StrapOn.strap( myTable )  --  Will return myTable as well, but you don't need to
+                            --  reassign it or anything
 
   StrapOn.harness()
 end
