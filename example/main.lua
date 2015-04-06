@@ -9,11 +9,9 @@ local c
 function love.load( arg )
   --  Will be continuously called
   --  Showcases the flow of callbacks (pre, _, and post)
-  a = {
+  a = StrapOn.strap({
       counter = 1
-    }
-
-  a = StrapOn.strap( a )
+    })
 
   function a.preupdate( ... )
     print( 'a.preupdate' )
@@ -35,10 +33,8 @@ function love.load( arg )
 
   --  Will only have it's method called once
   --  Showcases how to remove from the callback flow
-  --  Even though "unstrap" is called during update(), postupdate() will be called [this allows for cleanup, etc]
-  b = {}
-
-  b = StrapOn.strap( b )
+  --  Even though "unstrap" is called during update(), postupdate() will be called for that execution [this allows for cleanup, etc]
+  b = StrapOn.strap({})
 
   function b.update( ... )
     print( 'b.update' )
@@ -50,15 +46,15 @@ function love.load( arg )
   end
 
   --  Will be continuously called
-  --  Showcases selective callbacks
+  --  Showcases callbacks that will happen without even being declared
   c = StrapOn.strap()
 
   function c.update( ... )
     print( 'c.update' )
   end
 
-  function c.draw( ... )
-    print( 'c.draw' )
+  function c.mousemoved( ... )
+    print( 'c.mousemoved' )
   end
 
   --  Starting up StrapOn
