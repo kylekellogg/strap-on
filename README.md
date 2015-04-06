@@ -8,7 +8,7 @@ Strap-On is an easy-to-use library that allows you to have individual callbacks 
 
 These callbacks are executed in the order that they are added with the [LÖVE][love] callback **always** happening last. [LÖVE][love] callbacks will be (but are not yet being) created for you to add on to if you have not explicitly created them by the time you call `StrapOn.harness()`.
 
-This was _heavily_ inspired by [HUMP][hump], so major props to @vrld for that amazing library.
+This was _heavily_ inspired by [HUMP][hump], so major props to [@vrld][vrld] for that amazing library.
 
 ## How do I use it?
 
@@ -54,3 +54,4 @@ end
 
 [love]:   https://www.love2d.org/         "LÖVE"
 [hump]:   https://github.com/vrld/hump    "HUMP"
+[vrld]:   https://github.com/vrld         "vrld on Github"
