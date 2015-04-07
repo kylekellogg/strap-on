@@ -26,6 +26,9 @@ function love.load( arg )
 
     if a.counter == 5 then
       StrapOn.strap( b )
+      StrapOn.strap( b )  --  Don't worry, you can't accidentally strap a table twice
+    elseif a.counter == 10 then
+      StrapOn.unharness()
     end
 
     a.counter = a.counter + 1
@@ -39,6 +42,11 @@ function love.load( arg )
   function b.update( ... )
     print( 'b.update' )
     b.unstrap()
+    --[[
+    This can also be done via the call:
+
+    StrapOn.unstrap( b )
+    ]] --
   end
 
   function b.postupdate( ... )
